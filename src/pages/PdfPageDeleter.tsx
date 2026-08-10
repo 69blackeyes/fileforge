@@ -6,7 +6,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { deletePdfPages, getPdfPageCount } from '../utils/pdfProcessing';
-import { formatBytes, downloadBlob } from '../utils/fileHelpers';
+import { formatBytes, downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_PDF_TYPES } from '../utils/constants';
 import { Shield, Trash2, RotateCcw } from 'lucide-react';
 
@@ -55,7 +55,7 @@ export function PdfPageDeleter() {
 
   const handleDownload = () => {
     if (result) {
-      downloadBlob(new Blob([result], { type: 'application/pdf' }), 'modified.pdf');
+      downloadBytes(result, 'modified.pdf', 'application/pdf');
     }
   };
 

@@ -6,7 +6,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { splitPdf } from '../utils/pdfProcessing';
-import { formatBytes, downloadBlob } from '../utils/fileHelpers';
+import { formatBytes, downloadBlob, downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_PDF_TYPES } from '../utils/constants';
 import { Shield, Split, RotateCcw } from 'lucide-react';
 import JSZip from 'jszip';
@@ -46,7 +46,7 @@ export function PdfSplit() {
   const handleDownloadAll = async () => {
     if (results.length === 0) return;
     if (results.length === 1) {
-      downloadBlob(new Blob([results[0]], { type: 'application/pdf' }), 'split.pdf');
+      downloadBytes(results[0], 'split.pdf', 'application/pdf');
       return;
     }
     const zip = new JSZip();

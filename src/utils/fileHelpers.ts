@@ -24,6 +24,12 @@ export function downloadBlob(blob: Blob, filename: string): void {
   URL.revokeObjectURL(url);
 }
 
+export function downloadBytes(bytes: Uint8Array, filename: string, type: string): void {
+  const safeBytes = new Uint8Array(bytes.byteLength);
+  safeBytes.set(bytes);
+  downloadBlob(new Blob([safeBytes as unknown as BlobPart], { type }), filename);
+}
+
 export function downloadUrl(url: string, filename: string): void {
   const a = document.createElement('a');
   a.href = url;

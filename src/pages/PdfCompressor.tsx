@@ -5,7 +5,7 @@ import { FilePreview } from '../components/FilePreview';
 import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
-import { formatBytes, getReductionPercent, downloadBlob } from '../utils/fileHelpers';
+import { formatBytes, getReductionPercent, downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_PDF_TYPES } from '../utils/constants';
 import { Shield, FileDown, RotateCcw } from 'lucide-react';
 
@@ -43,7 +43,6 @@ export function PdfCompressor() {
       const optimized = await pdf.save({
         useObjectStreams: true,
         addDefaultPage: false,
-        preserveExistingEncryption: false,
       });
 
       setResult(optimized);
@@ -60,8 +59,7 @@ export function PdfCompressor() {
 
   const handleDownload = () => {
     if (result) {
-      const blob = new Blob([result], { type: 'application/pdf' });
-      downloadBlob(blob, 'compressed.pdf');
+      downloadBytes(result, 'compressed.pdf', 'application/pdf');
     }
   };
 

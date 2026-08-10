@@ -6,7 +6,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { reorderPdfPages, getPdfPageCount } from '../utils/pdfProcessing';
-import { formatBytes, downloadBlob } from '../utils/fileHelpers';
+import { formatBytes, downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_PDF_TYPES } from '../utils/constants';
 import { Shield, ArrowUpDown, RotateCcw, ArrowUp, ArrowDown } from 'lucide-react';
 
@@ -52,7 +52,7 @@ export function PdfPageReorderer() {
 
   const handleDownload = () => {
     if (result) {
-      downloadBlob(new Blob([result], { type: 'application/pdf' }), 'reordered.pdf');
+      downloadBytes(result, 'reordered.pdf', 'application/pdf');
     }
   };
 

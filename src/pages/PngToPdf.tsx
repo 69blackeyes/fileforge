@@ -5,7 +5,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { createPdfFromImages } from '../utils/pdfProcessing';
-import { downloadBlob } from '../utils/fileHelpers';
+import { downloadBytes } from '../utils/fileHelpers';
 import { Shield, FileImage, RotateCcw } from 'lucide-react';
 
 export function PngToPdf() {
@@ -41,8 +41,7 @@ export function PngToPdf() {
 
   const handleDownload = () => {
     if (result) {
-      const blob = new Blob([result], { type: 'application/pdf' });
-      downloadBlob(blob, 'converted.pdf');
+      downloadBytes(result, 'converted.pdf', 'application/pdf');
     }
   };
 

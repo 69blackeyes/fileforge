@@ -1,3 +1,5 @@
+import type { ToolInfo } from '../types';
+
 export const SUPPORTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 export const SUPPORTED_PDF_TYPES = ['application/pdf'];
 
@@ -28,7 +30,7 @@ export const TOOLS: ToolInfo[] = [
   { id: 'image-converter', name: 'Image Converter', description: 'Convert between JPG, PNG, and WEBP formats.', icon: 'RefreshCw', category: 'image', path: '/image-converter' },
   { id: 'jpg-to-pdf', name: 'JPG to PDF', description: 'Convert JPG images to PDF documents.', icon: 'FileImage', category: 'pdf', path: '/jpg-to-pdf' },
   { id: 'png-to-pdf', name: 'PNG to PDF', description: 'Convert PNG images to PDF documents.', icon: 'FileImage', category: 'pdf', path: '/png-to-pdf' },
-  { id: 'images-to-pdf', name: 'Images to PDF', description: 'Combine multiple images into a single PDF.', icon: 'Images', category: 'pdf', path: '/images-to-pdf' },
+  { id: 'images-to-pdf', name: 'Images to PDF', description: 'Combine multiple images into a single PDF.', icon: 'Image', category: 'pdf', path: '/images-to-pdf' },
   { id: 'pdf-to-jpg', name: 'PDF to JPG', description: 'Convert PDF pages to JPG images.', icon: 'FileText', category: 'pdf', path: '/pdf-to-jpg' },
   { id: 'pdf-to-png', name: 'PDF to PNG', description: 'Convert PDF pages to PNG images.', icon: 'FileText', category: 'pdf', path: '/pdf-to-png' },
   { id: 'pdf-compressor', name: 'PDF Compressor', description: 'Reduce PDF file size where possible.', icon: 'FileDown', category: 'pdf', path: '/pdf-compressor' },

@@ -1,4 +1,4 @@
-import { PDFDocument, PDFPage, PageSizes } from 'pdf-lib';
+import { PDFDocument, PageSizes, degrees as pdfDegrees } from 'pdf-lib';
 import { loadImage, createCanvas } from './imageProcessing';
 
 export async function createPdfFromImages(
@@ -121,7 +121,7 @@ export async function rotatePdf(file: File, degrees: number, pages?: number[]): 
   for (const pageIndex of targetPages) {
     const page = allPages[pageIndex];
     const currentRotation = page.getRotation().angle;
-    page.setRotation({ angle: currentRotation + degrees, type: 0 });
+    page.setRotation(pdfDegrees(currentRotation + degrees));
   }
 
   return pdf.save();

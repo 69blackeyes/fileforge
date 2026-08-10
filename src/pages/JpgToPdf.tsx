@@ -6,7 +6,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { createPdfFromImages } from '../utils/pdfProcessing';
-import { formatBytes, downloadBlob, generateFilename } from '../utils/fileHelpers';
+import { formatBytes, downloadBytes } from '../utils/fileHelpers';
 import { Shield, FileImage, RotateCcw, ArrowUp, ArrowDown, Trash2 } from 'lucide-react';
 
 export function JpgToPdf() {
@@ -45,8 +45,7 @@ export function JpgToPdf() {
 
   const handleDownload = () => {
     if (result) {
-      const blob = new Blob([result], { type: 'application/pdf' });
-      downloadBlob(blob, 'converted.pdf');
+      downloadBytes(result, 'converted.pdf', 'application/pdf');
     }
   };
 

@@ -5,7 +5,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { mergePdfs } from '../utils/pdfProcessing';
-import { formatBytes, downloadBlob } from '../utils/fileHelpers';
+import { formatBytes, downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_PDF_TYPES } from '../utils/constants';
 import { Shield, Merge, RotateCcw, ArrowUp, ArrowDown, Trash2, FileText } from 'lucide-react';
 
@@ -42,8 +42,7 @@ export function PdfMerge() {
 
   const handleDownload = () => {
     if (result) {
-      const blob = new Blob([result], { type: 'application/pdf' });
-      downloadBlob(blob, 'merged.pdf');
+      downloadBytes(result, 'merged.pdf', 'application/pdf');
     }
   };
 

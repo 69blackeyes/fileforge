@@ -5,9 +5,9 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { createPdfFromImages } from '../utils/pdfProcessing';
-import { downloadBlob } from '../utils/fileHelpers';
+import { downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_IMAGE_TYPES } from '../utils/constants';
-import { Shield, Images, RotateCcw, ArrowUp, ArrowDown, Trash2 } from 'lucide-react';
+import { Shield, Image, RotateCcw, ArrowUp, ArrowDown, Trash2 } from 'lucide-react';
 
 export function ImagesToPdf() {
   const [files, setFiles] = useState<File[]>([]);
@@ -42,8 +42,7 @@ export function ImagesToPdf() {
 
   const handleDownload = () => {
     if (result) {
-      const blob = new Blob([result], { type: 'application/pdf' });
-      downloadBlob(blob, 'images.pdf');
+      downloadBytes(result, 'images.pdf', 'application/pdf');
     }
   };
 
@@ -84,7 +83,7 @@ export function ImagesToPdf() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 mb-4">
-            <Images className="w-8 h-8" />
+            <Image className="w-8 h-8" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Images to PDF</h1>
           <p className="mt-2 text-gray-600 dark:text-gray-400">Combine multiple images into one PDF</p>

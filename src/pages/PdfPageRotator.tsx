@@ -6,7 +6,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { ProcessingState } from '../components/ProcessingState';
 import { rotatePdf } from '../utils/pdfProcessing';
-import { formatBytes, downloadBlob } from '../utils/fileHelpers';
+import { formatBytes, downloadBytes } from '../utils/fileHelpers';
 import { SUPPORTED_PDF_TYPES } from '../utils/constants';
 import { Shield, RotateCw, RotateCcw, RotateCcw as RotateLeft, RotateCw as RotateRight } from 'lucide-react';
 
@@ -43,7 +43,7 @@ export function PdfPageRotator() {
 
   const handleDownload = () => {
     if (result) {
-      downloadBlob(new Blob([result], { type: 'application/pdf' }), 'rotated.pdf');
+      downloadBytes(result, 'rotated.pdf', 'application/pdf');
     }
   };
 
